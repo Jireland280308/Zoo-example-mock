@@ -88,6 +88,8 @@ def Signup():
 
 @app.route("/login", methods = ["GET", "POST"])
 def Login():
+    
+    
     if request.method == "POST":
 
         email = request.form.get("email")
@@ -95,7 +97,7 @@ def Login():
 
         ConnectToDB()
 
-        #Check if Username exists
+        #Check if Email exists
 
         query = "Select * From Account WHERE LOWER(Email) = LOWER(?)"
         user = cursor.execute(query, (email,)).fetchone()
@@ -112,11 +114,20 @@ def Login():
 
             else:
                 print("Email or Password is incorrect")
+                return render_template("login.html", check=True)
+        else:
+            print("Email or Password is incorrect")
+            return render_template("login.html", check=True, email=email)
+
 
     return render_template("login.html")
 
 
 
+
+@app.route("/index", methods = ["GET", "POST"])
+def Index():
+    return render_template("index.html")
 
 if __name__ == '__main__':
     app.run(debug=True)

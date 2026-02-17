@@ -5,25 +5,6 @@ const password_input = document.getElementById('password-input')
 const repeat_password_input = document.getElementById('repeat-password-input')
 const error_message = document.getElementById('error-message')
 
-form.addEventListener('submit', (e) => {
-
-    let errors = []
-
-    if (firstname_input) {
-        // If we have a firstname input then we are in the signup page
-        errors = getSignupFormErrors(firstname_input.value, email_input.value, password_input.value, repeat_password_input.value)
-    }
-    else {
-        // If we don't have a firstname input then we are in the login page
-        errors = getLoginFormErrors(email_input.value, password_input.value)
-    }
-
-    if (errors.length > 0) {
-        // If there are any errors
-        e.preventDefault() //prevent submission
-        error_message.innerText = errors.join(". ") // Adds error messages together . and space is for proper punctuation
-    }
-})
 
 function getSignupFormErrors(firstname, email, password, repeatPassword) {
     let errors = [] // Creates a blank array
@@ -62,18 +43,38 @@ function getLoginFormErrors(email, password) {
     let errors = []
 
     if (email === '' || email == null) {
-        errors.push('Email is required')
+        errors.push('Email')
         email_input.parentElement.classList.add('incorrect')
     }
 
     if (password === '' || password == null) {
-        errors.push('Password is required')
+        errors.push('Password is incorrect')
         password_input.parentElement.classList.add('incorrect')
     }
 
-
-    return errors;
+    error_message.innerText = errors.join(" or ") // Adds error messages together . and space is for proper punctuation
+    console.log("msg", error_message)
 }
+
+
+form.addEventListener('submit', (e) => {
+
+    let errors = []
+
+    if (firstname_input) {
+        // If we have a firstname input then we are in the signup page
+        errors = getSignupFormErrors(firstname_input.value, email_input.value, password_input.value, repeat_password_input.value)
+    }
+
+    if (errors.length > 0) {
+        // If there are any errors
+        e.preventDefault() //prevent submission
+        error_message.innerText = errors.join(". ") // Adds error messages together . and space is for proper punctuation
+        console.log("msg", error_message)
+    }
+})
+
+
 const allInputs = [firstname_input, email_input, password_input, repeat_password_input].filter(input => input != null)
 
 // Activates every time the user enters something in the input element, checks if the input has the 'incorrect' class, (red styling), and if it does it will remove it.

@@ -9,7 +9,13 @@
     <script type="text/JavaScript" src="../static/scripts/validation.js" defer></script>
 </head>
 
-<body>
+<!-- jinja to pass the check variable from flask to check if the password is incorrect or there is no account under the email -->
+ <!-- onload runs the javascript function -->
+<body
+{% if check %}
+    onload="getLoginFormErrors('{{email}}', '')"
+{% endif %}
+>
     <div class="wrapper">
 
         <!-- "form" is used to allow users to enter something into the website which can be used by JavaScript or for backend purposes, usually has an action attribute (backend)-->
