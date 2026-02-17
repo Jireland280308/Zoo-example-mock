@@ -42,6 +42,7 @@ main p{
 }
 
 nav{
+    font-size: large;
     background-color: var(--accent-colour);
     border-bottom: 1px solid var(--base-colour);
 }
