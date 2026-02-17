@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --base-colour: #7f5539;
+    --accent-colour: #a68a64 ;
+    --text-colour: #ede0d4;
+    --input-colour: #f3f0ff;
+    --test-colour: #C9C5BA;
+
+    --colour1: #97B1A6;
+    --colour2: #656d4a;
+    --colour3: #414833;
+}
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-family: Poppins, Segoe UI, sans-serif;
+    color: var(--text-colour);
+}
+
+body{
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-image: url(../images/lizard-background.jpg);
+    background-size: cover;
+    background-position: bottom;
+}
+
+main{
+    padding: min(5em, 7%);
+}
+
+main p{
+    margin-top: .35em;
+}
+
+nav{
+    background-color: var(--accent-colour);
+    border-bottom: 1px solid var(--base-colour);
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+}
+
+nav .home-li{
+    margin-right: auto;
+}
+
+nav li{
+    display: flex;
+}
+
+nav a{
+    display: flex;
+    text-decoration: none;
+    color: var(--text-colour);
+    padding: 1em 2em;
+    transition: 150ms ease;
+}
+
+nav a:hover{
+    background-color: var(--colour1)
+}
+
+nav a.active-link{
+    border-bottom: 2px solid var(--text-colour)
+}
+
+nav a.accent-link{
+    background-color: var(--base-colour);
+}
